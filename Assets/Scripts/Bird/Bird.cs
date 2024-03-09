@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BirdMover))]
 public class Bird : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private BirdMover _mover;
+    private int _score;
+
+    private void Start()
     {
-        
+        _mover = GetComponent<BirdMover>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetPlayer()
     {
-        
+        _score = 0;
+        _mover.ResetBird();
+    }
+
+    public void Die()
+    {
+        Debug.Log("You are Dead");
+        Time.timeScale = 0;
     }
 }
